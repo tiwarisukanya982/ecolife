@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" conten="width=device-width, initial-scale=1.0">
+<titel>EcoLife | Sustainable Lifestyle Advisor</title>
+
+
+<style>
+:root{
+  --green: #176b45;
+  --light: #eaf5e9:
+  --lime: #c8e8a0;
+  --dark: #183b2b;
+  --white: #ffffff;
+  --muted: #65786c;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth: 
+}
+
+
+body{
+  font-family: Arial, sans-serif;
+  background: #f7faf5;
+  color:var(--dark);
+  line-height: 1.6;
+}
+
+
+nav{
+  display: flex:
+  justify-content: space-between;
+  aling-items: center;
+  padding: white;
+  postion: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 12px #183B2B0C;
+}
+
+.Logo {
+  font-size: 23px;
+  font-weight: 800;
+  color: var(--green);
+}
+
+nav a {
+  color: var(--dark);
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+.hero{
+  padding: 85px 8%;
+  background: linear-gradient(120deg, #eaf5e9, #d9edcf);
+  display: grid;
+  grid-template-colums: 1.3fr 0.7fr;
+  gap: 35px;
+  aling-items: center:
+}
+
+.tag {
+  display: inline-block;
+  background: white;
+  color: var(--green);
+  padding: 7px 14px
+  border-radius: 30px;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+h1{
+  font-size: clamp(36px, 5vw, 60px);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  letter-spacing: -1.5px;
+}
+
+h1 span {
+  color: var(--green);
+}
+
+.hero p {
+  color: #52695a;
+  max-width: 530px;
+  margin-bottom: 25px;
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  border-radius: 10px
+  padding: 13px 21px;
+  background: var(--green);
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #104b30;
+  transform: translate(-2px);
+}
+
+.hero-art {
+  min-height: 290px;
+  border-radius: 30px;
+  background: #c5e3b9;
+  display: flex;
+  justify-content: center;
+  aling-items: center;
+  font-size: 115px;
+  box-shadow: 15px 15px 0 #176b4512
+}
+
+.section{
+  padding: 65px 7%
+}
+
+
+.section-heading {
+  text-aling: center;
+  max-width: 650px;
+  margin: 0 auto 35px;
+}
+
+.section-heading h2 {
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
+.section-heading p {
+  color: var(--muted);
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px
+}
+
+.feature, .panel, .result-card {
+  background: white;
+  padding: 1px solid #e3ebe1:
+  border-radius: 18px;
+}
+
+.feature h3 {
+  margin-bottom: 8px;
+}
+
+.feature p { 
+  color: var(--muted);
+  font-size: 14px;
+}
+
+#assessment {
+  background: #eff6ec:
+}
+
+.panel { 
+  max-width: 850px;
+  margin: auto;
+  padding: 32px;
+  box-shadow: 0 12px 35px #183b2b08;
+}
+
+.from-grid {
+  display: grid;
+  grid-template-columns; 1fr 1fr;
+  gap: 23px;
+}
+
+.field label {
+  display: block;
+  font-weight: bold; 
+  margin-bottom: 9px;
+}
+
+.field select {
+  width; 100%;
+  padding: 13px;
+  border: 1px solid #d6e2d4;
+  border-radius: 9px;
+  background: #fbfdf9;
+  color: var(--dark);
+  font-size: 14px;
+}
+
+.field select:focus {
+  outline: 2px solid #8abf85;
+}
+
+.form-actions {
+  margin-top: 25px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.secondary {
+  background: #e7efe4;
+  color; var(--green);
+}
+
+#results {
+  display: none;
+}
+
+.results-top {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 25px;
+  aling-items: center;
+  margin-bottom: 28px;
+}
+
+.score-circle {
+  width: 155px;
+  height: 155px;
+  border-radius: 50%;
+  border: 10px solid #cce7bc;
+  display: flex;
+  flex-direction; column;
+  aling-items: center;
+  justify-content: center;
+  background: #f4faf0;
+}
+
+.score-circle strong {
+  font-size: 39px;
+  color; var(--green);
+}
+
+.score-circle span [
+  font-size: 12px;
+  color: var(--muted);
+}
+
+
+.result-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.tip {
+  background: white;
+  border: 1px solid #e0eade;
+  padding: 20px;
+  border-radius: 14px;
+}
+
+.tip h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.tip p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.tip label {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--green);
+  cursor: pointer;
+}
+
+.tip input {
+  margin-top: 4px;
+  accent-color: var(--green);
+}
+
+.note {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 18px;
+}
+
+footer {
+  background: #163d2a;
+  color: white;
+  padding: 35px 7%;
+  text-align: center;
+}
+
+footer p {
+  color: #d0e2d4;
+  font-size: 13px;
+  margin-top: 7px;
+}
+
+@media (max-width: 700px) {
+  nav { padding: 15px 5%; }
+  nav a { margin-left: 10px; font-size: 12px; }
+  .hero { grid-template-columns: 1fr; padding: 55px 6%; }
+  .hero-art { min-height: 180px; font-size: 80px; }
+  .section { padding: 48px 5%; }
+  .features, .form-grid, .result-list, .result-top {
+    grid-template-columns: 1fr;
+  }
+  .panel { padding: 22px; }
+  .score-circle { margin: auto; }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">🌿 EcoLife</div>
+  <div>
+    <a href="#home">Home</a>
+    <a href="#features">Features</a>
+    <a href="#assessment">Get Started</a>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div>
+    <div class="tag">🌎 Small steps, greener future</div>
+    <h1>Live better.<br>Live <span>sustainably.</span></h1>
+    <p>
+      Discover practical eco-friendly habits designed around your
+      daily lifestyle. Make mindful choices for a healthier planet.
+    </p>
+    <a class="btn" href="#assessment">Discover My Lifestyle →</a>
+  </div>
+  <div class="hero-art" aria-label="Plant illustration">🌱</div>
+</header>
+
+<section class="section" id="features">
+  <div class="section-heading">
+    <h2>A greener you starts here</h2>
+    <p>Understand your habits and discover simple ways to reduce
+       your environmental impact.</p>
+  </div>
+
+  <div class="features">
+    <article class="feature">
+      <div class="feature-icon">🚲</div>
+      <h3>Green Transport</h3>
+      <p>Explore walking, cycling, public transport and smarter travel.</p>
+    </article>
+
+    <article class="feature">
+      <div class="feature-icon">♻️</div>
+      <h3>Less Waste</h3>
+      <p>Learn to reduce single-use plastics and improve recycling habits.</p>
+    </article>
+
+    <article class="feature">
+      <div class="feature-icon">💡</div>
+      <h3>Save Resources</h3>
+      <p>Build mindful energy habits and reduce unnecessary food waste.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="assessment">
+  <div class="section-heading">
+    <h2>Your Lifestyle Assessment</h2>
+    <p>Answer these five questions to receive your personalized
+       sustainable lifestyle recommendations.</p>
+  </div>
+
+  <form class="panel" id="lifestyleForm">
+    <div class="form-grid">
+
+      <div class="field">
+        <label for="transport">1. Your usual transport</label>
+        <select id="transport" required>
+          <option value="">Select an option</option>
+          <option value="green">Walking, cycling or public transport</option>
+          <option value="mixed">A mix of public and private transport</option>
+          <option value="private">Mostly a personal vehicle</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="plastic">2. Single-use plastic usage</label>
+        <select id="plastic" required>
+          <option value="">Select an option</option>
+          <option value="low">Rarely</option>
+          <option value="medium">Sometimes</option>
+          <option value="high">Frequently</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="food">3. Food waste in your household</label>
+        <select id="food" required>
+          <option value="">Select an option</option>
+          <option value="low">Very little</option>
+          <option value="medium">Sometimes</option>
+          <option value="high">Often</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="energy">4. Electricity-saving habits</label>
+        <select id="energy" required>
+          <option value="">Select an option</option>
+          <option value="good">I switch off unused appliances</option>
+          <option value="sometimes">I do this sometimes</option>
+          <option value="poor">I often forget</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="recycling">5. Do you separate waste?</label>
+        <select id="recycling" required>
+          <option value="">Select an option</option>
+          <option value="yes">Yes, regularly</option>
+          <option value="sometimes">Sometimes</option>
+          <option value="no">Not yet</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn">Generate My Recommendations ✨</button>
+      <button type="reset" class="btn secondary">Reset Answers</button>
+    </div>
+  </form>
+</section>
+
+<section class="section" id="results" aria-live="polite">
+  <div class="section-heading">
+    <h2>Your EcoLife Results 🌿</h2>
+    <p>Here are some practical actions based on your answers.</p>
+  </div>
+
+  <div class="panel">
+    <div class="result-top">
+      <div class="score-circle">
+        <strong id="score">0</strong>
+        <span>Habit score / 100</span>
+      </div>
+      <div>
+        <h2 id="resultTitle">Your personal action plan</h2>
+        <p id="resultMessage"></p>
+        <p class="note">This is an illustrative habit score based on
+          your selected answers, not a scientific carbon-footprint
+          measurement or environmental certification.</p>
+      </div>
+    </div>
+
+    <h2 style="margin-bottom:18px">Your recommended actions</h2>
+    <div class="result-list" id="recommendations"></div>
+
+    <p id="progress" style="margin-top:22px;font-weight:bold"></p>
+
+    <div class="form-actions">
+      <button type="button" class="btn" onclick="window.print()">
+        Print / Save Results
+      </button>
+      <button type="button" class="btn secondary"
+        onclick="document.getElementById('assessment').scrollIntoView()">
+        Update Answers
+      </button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <h2>🌿 EcoLife</h2>
+  <p>Make sustainable choices. Inspire a greener tomorrow.</p>
+  <p>Student Project | Sustainable Lifestyle Recommendation System</p>
+</footer>
+
+<script>
+// Rule-based recommendation system.
+// Each answer has an illustrative score, not a scientific metric.
+
+const questions = [
+  {
+    id: "transport",
+    scores: { green: 20, mixed: 12, private: 5 },
+    recommendations: {
+      green: {
+        title: "Keep choosing greener transport",
+        text: "Continue walking, cycling or using public transport when practical."
+      },
+      mixed: {
+        title: "Plan greener journeys",
+        text: "Combine errands and consider public transport or carpooling when practical."
+      },
+      private: {
+        title: "Explore alternatives to solo driving",
+        text: "Try walking, cycling, public transport or carpooling for suitable journeys."
+      }
+    }
+  },
+  {
+    id: "plastic",
+    scores: { low: 20, medium: 12, high: 5 },
+    recommendations: {
+      low: {
+        title: "Maintain low plastic use",
+        text: "Keep a reusable bag and bottle handy when going out."
+      },
+      medium: {
+        title: "Reduce disposable items",
+        text: "Carry a reusable bottle and bag to avoid unnecessary single-use plastic."
+      },
+      high: {
+        title: "Start with reusable essentials",
+        text: "Replace disposable bags, cups and bottles with reusable alternatives where possible."
+      }
+    }
+  },
+  {
+    id: "food",
+    scores: { low: 20, medium: 12, high: 5 },
+    recommendations: {
+      low: {
+        title: "Keep preventing food waste",
+        text: "Plan meals, store food correctly and use leftovers safely."
+      },
+      medium: {
+        title: "Plan meals in advance",
+        text: "Prepare a shopping list and check what you already have before buying food."
+      },
+      high: {
+        title: "Make a food-saving plan",
+        text: "Start with smaller portions, meal planning and safe storage of leftovers."
+      }
+    }
+  },
+  {
+    id: "energy",
+    scores: { good: 20, sometimes: 12, poor: 5 },
+    recommendations: {
+      good: {
+        title: "Continue saving electricity",
+        text: "Switch off unused lights and devices and use efficient lighting."
+      },
+      sometimes: {
+        title: "Build an energy-saving routine",
+        text: "Check lights, fans and appliances when leaving a room."
+      },
+      poor: {
+        title: "Try a simple switch-off habit",
+        text: "Make it a routine to turn off lights and appliances that are not needed."
+      }
+    }
+  },
+  {
+    id: "recycling",
+    scores: { yes: 20, sometimes: 12, no: 5 },
+    recommendations: {
+      yes: {
+        title: "Improve waste sorting",
+        text: "Continue separating waste and follow your local recycling guidelines."
+      },
+      sometimes: {
+        title: "Separate waste more consistently",
+        text: "Use clearly labelled bins for the waste categories accepted locally."
+      },
+      no: {
+        title: "Start separating waste",
+        text: "Check local waste rules and begin separating recyclable and other household waste."
+      }
+    }
+  }
+];
+
+const form = document.getElementById("lifestyleForm");
+const results = document.getElementById("results");
+const recommendations = document.getElementById("recommendations");
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  let totalScore = 0;
+  let cards = [];
+
+  questions.forEach(function(question) {
+    const answer = document.getElementById(question.id).value;
+    totalScore += question.scores[answer];
+
+    const recommendation = question.recommendations[answer];
+
+    cards.push({
+      title: recommendation.title,
+      text: recommendation.text
+    });
+  });
+
+  // The score is an illustrative average of five habit ratings.
+  const score = Math.round(totalScore / questions.length * 5);
+  document.getElementById("score").textContent = score;
+
+  let title = "Your greener journey starts here!";
+  let message = "Choose one or two actions and build them into your routine.";
+
+  if (score >= 85) {
+    title = "Great sustainable habits!";
+    message = "You reported several helpful habits. Keep them going and explore new improvements.";
+  } else if (score >= 65) {
+    title = "You're making a good start!";
+    message = "You already have some positive habits. A few consistent changes can help you improve.";
+  }
+
+  document.getElementById("resultTitle").textContent = title;
+  document.getElementById("resultMessage").textContent = message;
+
+  recommendations.innerHTML = "";
+
+  cards.forEach(function(card, index) {
+    const article = document.createElement("article");
+    article.className = "tip";
+
+    const heading = document.createElement("h3");
+    heading.textContent = (index + 1) + ". " + card.title;
+
+    const paragraph = document.createElement("p");
+    paragraph.textContent = card.text;
+
+    const label = document.createElement("label");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+
+    checkbox.addEventListener("change", updateProgress);
+
+    const labelText = document.createElement("span");
+    labelText.textContent = "I will try this action";
+
+    label.append(checkbox, labelText);
+    article.append(heading, paragraph, label);
+    recommendations.appendChild(article);
+  });
+
+  updateProgress();
+
+  results.style.display = "block";
+  results.scrollIntoView({ behavior: "smooth" });
+});
+
+function updateProgress() {
+  const boxes = recommendations.querySelectorAll('input[type="checkbox"]');
+  const completed = Array.from(boxes).filter(box => box.checked).length;
+
+  document.getElementById("progress").textContent =
+    "Actions completed: " + completed + " of " + boxes.length;
+}
+
+// Reset form and clear previous results.
+form.addEventListener("reset", function() {
+  results.style.display = "none";
+});
+</script>
+
+</body>
+</html>
+
+
